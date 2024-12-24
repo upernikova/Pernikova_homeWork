@@ -44,6 +44,6 @@ public class Main {
         task.diagonal();
 
         System.out.println("\n Task 14:");
-        task.array(5,10);
+        task.array(5,25);
     }
 }
