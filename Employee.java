@@ -1,6 +1,3 @@
-/*
-Класс сотрудника с заданными полями
- */
 public class Employee {
     private String firstName;
     private String lastName;
@@ -10,30 +7,25 @@ public class Employee {
     private int salary;
     private int age;
 
-    /*
-     Конструктор, в котором приравниваются поля к аргументам из конструктора
-     */
-    public Employee(String personFirstName, String personLastName, String personPosition,
-                    String personEmail, String personPhone, int personSalary, int personAge) {
-        this.firstName = personFirstName;
-        this.lastName = personLastName;
-        this.position = personPosition;
-        this.email = personEmail;
-        this.phone = personPhone;
-        this.salary = personSalary;
-        this.age = personAge;
+    // Конструктор, в котором приравниваются поля к аргументам из конструктора
+    public Employee(String firstName, String lastName, String position, String email, String phone, int salary, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.position = position;
+        this.email = email;
+        this.phone = phone;
+        this.salary = salary;
+        this.age = age;
     }
 
-    /*
-     Через toString, т.к. мы выводим объект и преобразуем в строки
-     */
+    // Метод для вывода информации об объекте
     public String toString() {
-        return ("FirstName: " + this.firstName
-                + "\nLastName: " + this.lastName
-                + "\nPosition: " + this.position
-                + "\nEmail: " + this.email
-                + "\nPhone: " + this.phone
-                + "\nSalary: " + this.salary
-                + "\nAge: " + this.age);
+        return  "Имя: " + firstName + "\n" +
+                "Фамилия: " + lastName + "\n" +
+                "Должность: " + position + "\n" +
+                "Email: " + email + "\n" +
+                "Телефон: " + phone + "\n" +
+                "Зарплата: " + salary + "\n" +
+                "Возраст: " + age;
     }
 }

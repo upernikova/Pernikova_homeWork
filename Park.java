@@ -1,38 +1,49 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Park {
     private String name;
-    private Attraction attractions = new Attraction("Roller Coaster", "From 10.00 to 22.00", 10);
+    private List<Attraction> attractions;
 
+    // Конструктор для инициализации парка
     public Park(String name) {
         this.name = name;
+        this.attractions = new ArrayList<>();
     }
 
     public String getName() {
         return name;
     }
 
-    public void info() {
-        attractions.info();
+    // Метод для добавления аттракциона в список
+    public void addAttraction(String name, String workingHours, int cost) {
+        Attraction attraction = new Attraction(name, workingHours, cost);
+        attractions.add(attraction);
     }
 
-    public void newAttraction(String name, String workingHours, double cost) {
-        Attraction newAttraction = new Attraction(name, workingHours, cost);
-        newAttraction.info();
+    public void listAttractions() {
+        for (Attraction attraction : attractions) {
+            attraction.info();
+        }
     }
 
+    // Внутренний класс Attraction
     private class Attraction {
-        private String nameAttractions, workingHours;
-        private double cost;
+        private String nameAttractions;
+        private String workingHours;
+        private int cost;
 
-        public Attraction(String pAttractions, String pWorkingHours, double pCost) {
-            this.nameAttractions = pAttractions;
-            this.workingHours = pWorkingHours;
-            this.cost = pCost;
+        // Конструктор для инициализации аттракциона
+        public Attraction(String nameAttractions, String workingHours, int cost) {
+            this.nameAttractions = nameAttractions;
+            this.workingHours = workingHours;
+            this.cost = cost;
         }
 
-
         public void info() {
-            System.out.println("Welcome to park:" + getName() + "\nAttraction name: " + this.nameAttractions + "\nWorking Hours: " + this.workingHours + "\nCost: " + this.cost + "\n");
-
+            System.out.println("Аттракцион: " + nameAttractions);
+            System.out.println("Время работы: " + workingHours);
+            System.out.println("Стоимость: " + cost + " р.\n");
         }
     }
 }
