@@ -8,6 +8,7 @@ public class PhoneDirectory {
 
     // Метод для добавления номера телефона
     public void add(String name, String number) {
+        // Если фамилия уже существует, добавляем номер, если его ещё нет
         directory.computeIfAbsent(name, k -> new ArrayList<>()).add(number);
     }
 
@@ -17,7 +18,7 @@ public class PhoneDirectory {
         if (phones.isEmpty()) {
             System.out.println("\nПользователь с фамилией " + name + " не найден!");
         } else {
-            System.out.println("\nФамилия: " + name + "\nНомер телефона: " + phones);
+            System.out.println("\nФамилия: " + name + "\nНомер телефона: " + String.join(", ", phones));
         }
     }
 }
