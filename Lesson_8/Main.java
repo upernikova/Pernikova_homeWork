@@ -15,6 +15,8 @@ public class Main {
         directory.add("Ковалев", "+375 (44) 654-78-90");
         directory.add("Романов", "+375 (33) 987-01-23");
         directory.add("Федоров", "+375 (33) 789-01-23");
+        directory.add("Новиков", "+375 (33) 789-01-23");
+        directory.add("Ковалев", "+375 (29) 321-45-67");
 
         directory.get("Ковалев");
         directory.get("Зайцев");
