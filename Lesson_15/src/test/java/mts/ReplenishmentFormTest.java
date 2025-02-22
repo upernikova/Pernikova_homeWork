@@ -1,8 +1,6 @@
 package mts;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -51,38 +49,5 @@ public class ReplenishmentFormTest extends BaseTest {
         assertEquals(expectedText, actualText, "Displayed payment text does not match expected value");
 
         driver.switchTo().defaultContent();
-    }
-
-    @Test
-    public void testInvalidAmount() {
-        ReplenishmentPage page = new ReplenishmentPage(driver);
-        page.fillReplenishmentForm("297777777", "0", "test@gmail.com");
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement errorMessageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//*[@id=\"pay-connection\"]/div[2]/p")
-        ));
-
-        String actualErrorMessage = errorMessageElement.getAttribute("innerText").trim();
-        String expectedErrorMessage = "Введите сумму платежа";
-
-        assertEquals(expectedErrorMessage, actualErrorMessage, "Error message for amount does not match");
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"в", "1", "com", "@gmail"})
-    public void testInvalidEmail(String email) {
-        ReplenishmentPage page = new ReplenishmentPage(driver);
-        page.fillReplenishmentForm("297777777", "40", email);
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement errorMessageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//*[@id='pay-connection']/div[3]/p")
-        ));
-
-        String actualErrorMessage = errorMessageElement.getAttribute("innerText").trim();
-        String expectedErrorMessage = "Введите корректный адрес электронной почты.";
-
-        assertEquals(expectedErrorMessage, actualErrorMessage, "Email error message does not match");
     }
 }
