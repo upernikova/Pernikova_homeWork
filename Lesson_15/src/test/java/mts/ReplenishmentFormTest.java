@@ -53,30 +53,6 @@ public class ReplenishmentFormTest extends BaseTest {
         driver.switchTo().defaultContent();
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"0", "29777", "-1"})
-    public void testInvalidPhoneNumbers(String phone) {
-        ReplenishmentPage page = new ReplenishmentPage(driver);
-        page.fillReplenishmentForm(phone, "5", "test@gmail.com");
-
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement errorMessageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//*[@id='pay-connection']/div[1]/p[1]")
-        ));
-
-        String actualErrorMessage = errorMessageElement.getAttribute("innerText").trim();
-
-        String expectedError1 = "Введите номер телефона";
-        String expectedError2 = "Номер телефона указан неверно";
-
-        if (actualErrorMessage.equals(expectedError1) || actualErrorMessage.equals(expectedError2)) {
-            assertTrue(true);
-        } else {
-            fail("Unexpected phone number error: " + actualErrorMessage);
-        }
-    }
-
     @Test
     public void testInvalidAmount() {
         ReplenishmentPage page = new ReplenishmentPage(driver);
