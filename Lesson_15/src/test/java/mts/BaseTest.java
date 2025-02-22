@@ -33,7 +33,7 @@ public class BaseTest {
             try {
                 wait.until(ExpectedConditions.elementToBeClickable(buttons.get(0))).click();
             } catch (Exception e) {
-                System.out.println("Окно с cookies не закрылось.");
+                System.out.println("Окно с cookies не закрылось");
             }
         }
     }
