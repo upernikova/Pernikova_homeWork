@@ -28,8 +28,16 @@ public class ReplenishmentFormTest extends BaseTest {
     public void testDetailsLink() {
         ReplenishmentPage page = new ReplenishmentPage(driver);
         page.clickDetailsLink();
+
         assertEquals("https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/",
                 driver.getCurrentUrl(), "URL doesn't match");
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement header = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//main//h3[contains(text(), 'Оплата банковской картой')]")
+        ));
+
+        assertTrue(header.isDisplayed(), "Expected header 'Оплата банковской картой' is not displayed");
     }
 
     @Test
