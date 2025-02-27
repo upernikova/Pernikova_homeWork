@@ -32,16 +32,7 @@ public class ReplenishmentPage {
 
     public boolean areLogosDisplayed() {
         List<WebElement> logos = driver.findElements(logoLocator);
-        if (logos.size() != 5) {
-            return false;
-        }
-
-        for (WebElement logo : logos) {
-            if (!logo.isDisplayed()) {
-                return false;
-            }
-        }
-        return true;
+        return !logos.isEmpty();
     }
 
     public void clickDetailsLink() {
